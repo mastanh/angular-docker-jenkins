@@ -16,6 +16,7 @@ node {
 
     stage('Checkout') {
         //disable to recycle workspace data to save time/bandwidth
+        //adding test comment
         deleteDir()
         checkout scm
     }
