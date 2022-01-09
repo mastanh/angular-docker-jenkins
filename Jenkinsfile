@@ -13,7 +13,8 @@ properties(
     ]
 )
 node {
-
+ def app
+ 
     stage('Checkout') {
         //disable to recycle workspace data to save time/bandwidth
         //adding test comment
@@ -50,9 +51,11 @@ node {
         sh 'docker build -t angular-test .'
     }
     stage('docker push') {
-       docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {            
-				app.push("${env.BUILD_NUMBER}")
-	        } 
+           steps {
+        withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
+          sh  'docker push mastannpu87/angular-test:latest'
+        } 
+      }
     }
     stage('Deploy') {
         milestone()
