@@ -49,7 +49,11 @@ node {
     stage('docker build') {
         sh 'docker build -t angular-test .'
     }
-
+    stage('docker push') {
+       docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {            
+				app.push("${env.BUILD_NUMBER}")
+	        } 
+    }
     stage('Deploy') {
         milestone()
         echo "Deploying..."
