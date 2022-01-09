@@ -47,7 +47,7 @@ node {
     //end docker
 
     stage('docker build') {
-        sh 'docker built -t angular-test .'
+        sh 'docker build -t angular-test .'
     }
 
     stage('Deploy') {
