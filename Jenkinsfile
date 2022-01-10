@@ -17,7 +17,7 @@ node {
  def image = 'registry.hub.docker.com/mastannpu87/angular-test'
     stage('Checkout') {
         //disable to recycle workspace data to save time/bandwidth
-        //adding test comment
+        //adding test1 comment
         deleteDir()
         checkout scm
     }
